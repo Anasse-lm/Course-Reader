@@ -113,4 +113,48 @@
             </div>
         )
     }
+```
+6. **Updating objects in state:**
+- Basically if i have an object to update it all i need is to use useState hook with the spreed syntax **...objName** ex: [...objName, attri: newvalue], and a onChange event handler
+```jsx
+    const [car, setCar] = useState({
+        year: 2024,
+        make:'Ford',
+        model:'Mustang'
+    })
+    function handleYearChange(event)
+    {
+        // This is wrong, because your replacing the car object with prototype car(year, make, model) with car(year)
+        setCar({year: event.target.value})
+
+        // The right answer is: 
+        setCar({...car, year: event.target.value})
+    }
+```
+7. **UseEffect():**
+-  **Def:** React Hook that tells React to **DO THIS CODE WHEN** :
+    * This component re-renders
+    * This component mounts (which means this component appended to the DOM usually the first time you open the page or when u refresh the page)
+    * The state of a value changes
+
+- **syntax:** **useEffect(function, [dependencies])**
+    * So their is 3 prototypes of useEffect() hook:
+
+        1. **useEffect(() => {})  // Runs after every re-render**
+
+        2. **useEffect(() => {}, [])  //Runs only on mount**
+
+        3. **useEffect(() => {}, [values])    //Runs on mount + when value changes**
+
+- **Uses:** 
+
+    1. **Event Listeners**
+
+    2. **DOM manipulation**
+
+    3. **Subscription (real-time updates)** // i don't understand this
+
+    4. **Fetching Data from an API**
+
+    5. **Clean up when a component unmounts**
 
