@@ -1,6 +1,7 @@
 # Learning Notes:
 ## React Notes:
 1. **Props**:
+
 - **Props** are **read-only** properties that are shared between components. A parent component can send data to a child component. 
     ```jsx
         <Component key=value />
@@ -34,6 +35,7 @@
         }
         export default Component
 2. **Conditional Rendering**:
+
 - It allows you to control what gets rendered in your application based on certain conditions **(show, hide or change components)**
 
     **Basically what we use to render elements in our component are:** 
@@ -42,6 +44,7 @@
         - Tenary operators
 
 3. **React Hooks:**
+
 - Special functions that allows functional components to use React features without writing class components **(useState, useEffect, useContext, useReducer, useCallback, and more ...)**
     * **useState:** A react hook that allows the creation of a stateful variable AND a setter function to update its value in the virtual DOM: 
         
@@ -73,9 +76,11 @@
                 )
             }
 4. **Onchange event handler:**
+
 * Event handler used primarily with form elements ex. input, textarea, select, radio. **Triggers a function every time the value of the input changes.**
 
 5. **Updater function:**
+
 - A function passed as an argument to setState() usually **ex.** setYear(prevYear => prevYear + 1).<br> 
 **-Allow for safe updates based on the previous state**<br>
 **-Used with multiple state updates and asynchronous functions**<br>
@@ -115,6 +120,7 @@
     }
 ```
 6. **Updating objects in state:**
+
 - Basically if i have an object to update it all i need is to use useState hook with the spreed syntax **...objName** ex: [...objName, attri: newvalue], and a onChange event handler
 ```jsx
     const [car, setCar] = useState({
@@ -132,9 +138,12 @@
     }
 ```
 7. **UseEffect():**
+
 -  **Def:** React Hook that tells React to **DO THIS CODE WHEN** :
     * This component re-renders
+
     * This component mounts (which means this component appended to the DOM usually the first time you open the page or when u refresh the page)
+
     * The state of a value changes
 
 - **syntax:** **useEffect(function, [dependencies])**
@@ -158,3 +167,6 @@
 
     5. **Clean up when a component unmounts**
 
+8. **useContext():**
+
+- **Def:** React Hook that allows you to share values between multiple levels of components without passing props through each level.
