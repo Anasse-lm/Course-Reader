@@ -257,10 +257,9 @@ i.e:    ComponentC is parent of ComponentD
 
 9. **useRef():** 
 - **Def:** useState() re-renders the component when the state value changes.
-**useRef**:"use reference" **does not cause re-renders when its value changes.**
+**useRef**:"use reference" **does not cause re-renders when its value changes**.
+   * Accessing/Interacting with DOM elements.
 
-* Accessing/Interacting with DOM elements.
+    * Handling Focus, Animations, and Transitions
 
-* Handling Focus, Animations, and Transitions
-
-* Managing Timers and Intervals
+    * Managing Timers and Intervals
