@@ -170,3 +170,87 @@
 8. **useContext():**
 
 - **Def:** React Hook that allows you to share values between multiple levels of components without passing props through each level.
+
+- It solves the problem of **Props drilling**.
+
+- **PROVIDER COMPONENTS:**
+    1. import {createContext} from 'react';
+    
+    2. export const MyContext = createContext();
+
+    3.  <MyContext.Provider value={value}>
+            <Child />
+        </MyContext.Provider>
+
+- **CONSUMER COMPONENTS:**
+    1.  import React, {useContext} from 'react';
+        import { MyContext } from './ComponentA';
+
+    2. const value = useContext(MyContext);
+
+- **Example:**
+```
+Structure of apps example:
+
+my-app
+    |
+    |__ src
+        |
+        |__ components
+                |
+                |__ ComponentA
+                |
+                |__ ComponentB
+                |
+                |__ ComponentC
+                |
+                |__ ComponentD
+
+            ************************************************************
+i.e:    ComponentC is parent of ComponentD
+        ComponentB is parent of ComponentC
+        ComponentA is parent of ComponentB 
+```
+```jsx
+    // This is the provider component
+
+    import {useState, createContext} from 'react';
+    import ComponentB from './ComponentB'
+    // we named this var based on state variable (user + Context = UserContext)
+    export const UserContext = createContext();
+
+    function ComponentA()
+    {
+        const [user, setUser] = useState("Anasse")
+        return (
+            <div>
+                <h1>ComponentA</h1>
+                <!-- This is where the magic works-->
+                <MyContext.Provider value={user}>
+                    <!-- We only have to use props ones in ComponentB-->
+                    <ComponentB user={user} />
+                </MyContext.Provider>
+                <h2>Hello {user}</h2>
+            </div>
+        )
+    }
+    export default ComponentA;
+```
+```jsx
+    // This is the consumer component
+    import {useContext} from 'react';
+    import UserContext from './ComponentA';
+
+    function ComponentD()
+    {
+        const user = userContext(UserContext);
+
+        return (
+            <div>
+                <h1>ComponentD</h1>
+                <h2>Bye {user}</h2>
+            </div>
+        )
+    }
+    export default ComponentD;
+```    
