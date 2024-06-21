@@ -253,4 +253,14 @@ i.e:    ComponentC is parent of ComponentD
         )
     }
     export default ComponentD;
-```    
+```
+
+9. **useRef():** 
+- **Def:** useState() re-renders the component when the state value changes.
+**useRef**:"use reference" **does not cause re-renders when its value changes.**
+
+* Accessing/Interacting with DOM elements.
+
+* Handling Focus, Animations, and Transitions
+
+* Managing Timers and Intervals
