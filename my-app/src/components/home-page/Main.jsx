@@ -1,65 +1,64 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext, useEffect } from 'react';
-import { FilesContext } from "../context/FilesContext";
-export default function Main() {
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { FilesContext } from '../context/FilesContext';
 
-  let {files, setFiles} = useContext(FilesContext);
-  let navigate = useNavigate()
+function Main() {
+  const { files, setFiles } = useContext(FilesContext);
+  const navigate = useNavigate();
 
-  
-  function handleDirectoryUpload(event)
-  {
-    const directoryFiles = []
-    const fileList = event.target.files
-    // Extract directory name from the first file's webkitRelativePath
-    const directoryName = fileList.length > 0 ? fileList[0].webkitRelativePath.split('/')[0] : '';
-    
-    console.log(directoryName);
+  const handleDirectoryUpload = async (event) => {
+    const fileList = event.target.files;
+    const formData = new FormData();
 
-    for (let i = 0; i < fileList.length; i++)
-    {
-      directoryFiles.push(fileList[i])
+    for (let i = 0; i < fileList.length; i++) {
+      formData.append('files', fileList[i]);
     }
 
-    setFiles(directoryFiles)
-    console.log(directoryName + "from main");
-    localStorage.setItem('filesPath', directoryName)
+    try {
+      const response = await axios.post('http://localhost:5000/uploads', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      setFiles(response.data.files);
+      const name = fileList[0].webkitRelativePath.split('/')[0];
+      localStorage.setItem('directoryName', name);
+      localStorage.setItem('files', JSON.stringify(response.data.files));
+    } catch (error) {
+      console.error('Error uploading files:', error);
+    }
+  };
+
+  const handleReadButton = () => {
+    navigate('/slider');
+  };
+
+  const handleClearButton = () => {
+    const inputVal = document.getElementById('inputVal')
+    inputVal.value = ''
   }
-  
-  const handleReadButton = () =>
-  {
-    navigate('/slider')
-  };
-
-  const handleClearButton = () => 
-  {
-    const uploadInput = document.getElementById('upload-input')
-    setFiles([]); // Clear files state
-    uploadInput.value = ''
-  };
-
   return (
     <main className="main container">
       <div className="input-group mb-3">
-        <button className="btn btn-outline-secondary" type="button">
-          <input 
-            id="upload-input"
-            type="file"
-            webkitdirectory="true"
-            directory="true"
-            multiple
-            onChange={handleDirectoryUpload}
-          />
-        </button>
+        <input
+          id="inputVal" 
+          type="file"
+          webkitdirectory="true"
+          directory="true"
+          multiple
+          onChange={handleDirectoryUpload}
+        />
       </div>
       <div>
         <button className="btn btn-primary m-2" onClick={handleReadButton} disabled={files.length === 0}>
         **** Read ****
         </button>
         <button className="btn btn-primary" onClick={handleClearButton} disabled={files.length === 0}>
-        **** Clear ****
+          **** Clear ****
         </button>
       </div>
     </main>
   );
 }
+export default Main;
