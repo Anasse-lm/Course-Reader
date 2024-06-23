@@ -263,3 +263,8 @@ i.e:    ComponentC is parent of ComponentD
     * Handling Focus, Animations, and Transitions
 
     * Managing Timers and Intervals
+
+- **Code:**
+```jsx
+    const varRef = useRef()       
+    // we can use also the ref attribute of html with userRef()
