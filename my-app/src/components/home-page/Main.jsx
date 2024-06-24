@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { FilesContext } from '../context/FilesContext';
+import { useNavigate } from 'react-router-dom';
 
-function Main() {
-  const { files, setFiles } = useContext(FilesContext);
-  const navigate = useNavigate();
+function Main({ setCanAccessSlider }) {
+  const [ files, setFiles ] = useState([])
+  const navigate = useNavigate()
 
   const handleDirectoryUpload = async (event) => {
     const fileList = event.target.files;
@@ -24,14 +23,14 @@ function Main() {
       setFiles(response.data.files);
       const name = fileList[0].webkitRelativePath.split('/')[0];
       localStorage.setItem('directoryName', name);
-      localStorage.setItem('files', JSON.stringify(response.data.files));
     } catch (error) {
       console.error('Error uploading files:', error);
     }
   };
 
   const handleReadButton = () => {
-    navigate('/slider');
+    setCanAccessSlider(true)
+    navigate('/slider')
   };
 
   const handleClearButton = () => {

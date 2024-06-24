@@ -10,45 +10,39 @@ const port = 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, 'build')));
 
-// Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    const uploadPath = path.join(__dirname, 'uploads');
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
+    }
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
+    cb(null, file.originalname);
+  }
 });
+
 const upload = multer({ storage });
 
-// Routes
-
-// Cleanup uploads directory on server start
-const uploadsDir = './uploads';
-if (fs.existsSync(uploadsDir)) {
-    fs.rmdirSync(uploadsDir, { recursive: true });
-    console.log(`Deleted ${uploadsDir} and its contents on server start.`);
-  } else {
-    fs.mkdirSync(uploadsDir, { recursive: true });
-    console.log(`Created ${uploadsDir} directory on server start.`);
-  }
-
-// Upload files
+// Upload route
 app.post('/uploads', upload.array('files'), (req, res) => {
-  if (!req.files) {
-    return res.status(400).send('No files were uploaded.');
+  const files = req.files;
+  if (!files) {
+    return res.status(400).json({ error: 'No files uploaded' });
   }
-  res.json({
+  res.json({ 
     message: 'Files uploaded successfully',
-    files: req.files,
-  });
+    files: files
+   });
 });
 
 // Get file metadata
 app.get('/files', (req, res) => {
-  fs.readdir('uploads', (err, files) => {
+  fs.readdir(path.join(__dirname, 'uploads'), (err, files) => {
     if (err) {
       return res.status(500).json({ error: 'Unable to read files' });
     }
@@ -56,8 +50,14 @@ app.get('/files', (req, res) => {
   });
 });
 
+// Clear uploads directory on server start
+const uploadsDir = path.join(__dirname, 'uploads');
+if (fs.existsSync(uploadsDir)) {
+  fs.rmdirSync(uploadsDir, { recursive: true });
+  console.log(`Deleted ${uploadsDir} and its contents on server start.`);
+}
+fs.mkdirSync(uploadsDir, { recursive: true });
 
-// Start the server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });

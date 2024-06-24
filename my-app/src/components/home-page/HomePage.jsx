@@ -1,11 +1,11 @@
 import Header from './Header';
 import Main from './Main';
 
-function HomePage() {
+function HomePage({ setCanAccessSlider }) {
   return (
     <div className='home-page'>
       <Header />
-      <Main />
+      <Main setCanAccessSlider={setCanAccessSlider}/>
     </div>
   );
 }

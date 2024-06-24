@@ -1,11 +1,11 @@
 import Path from './Path';
 import Slider from './Slider';
-import { FilesContext } from '../context/FilesContext';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function SlidesPage() {
-  let {files, setFiles} = useContext(FilesContext);
-  
+  const handleFetchingData = () => {
+
+  } 
   return (
     <div className='slides-page'>
       <Path />
@@ -13,5 +13,4 @@ function SlidesPage() {
     </div>
   );
 }
-
 export default SlidesPage;

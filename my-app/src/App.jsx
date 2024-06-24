@@ -1,14 +1,26 @@
-import RouterController from "./components/RouterController";
+import HomePage from './components/home-page/HomePage';
+import { BrowserRouter as Router, Route, Routes, Navigate  } from 'react-router-dom';
+import AboutUs from './components/home-page/AboutUs';
+import Donate from './components/home-page/Donate';
+import SlidesPage from './components/slides-page/SlidesPage';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import { FilesProvider } from "./components/context/FilesContext";
 
 function App() {
+  const [canAccessSlider, setCanAccessSlider] = useState(false);
+
   return (
     <div className='app'>
-      <FilesProvider>
-        <RouterController />
-      </FilesProvider>
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<HomePage setCanAccessSlider={setCanAccessSlider}/>} />
+          <Route path="/slider" caseSensitive={true} element={canAccessSlider ? <SlidesPage/> : <Navigate to='/'/>}/>
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="*" element={<Navigate to="/"/>} /> 
+        </Routes>
+      </Router>
     </div>
   );
 }
