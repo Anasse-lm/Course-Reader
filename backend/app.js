@@ -50,6 +50,14 @@ app.get('/files', (req, res) => {
   });
 });
 
+// Delete uploads dir:
+app.delete('/delete', (req, res) => {
+  if (!fs.existsSync(uploadsDir)) {
+    return '';
+  }
+  fs.rmdirSync(uploadsDir, { recursive: true });
+  res.json({message: 'uploads dir is deleted'})
+})
 // Clear uploads directory on server start
 const uploadsDir = path.join(__dirname, 'uploads');
 if (fs.existsSync(uploadsDir)) {

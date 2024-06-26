@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Main({ setCanAccessSlider }) {
   const [ files, setFiles ] = useState([])
   const navigate = useNavigate()
+  const handleUploadDir = async() => {
+    const response = await axios.delete('http://localhost:5000/delete')
+  }
+  useEffect(() => {
+    handleUploadDir()
+  },[])
 
+  
   const handleDirectoryUpload = async (event) => {
-    const fileList = event.target.files;
+    const fileList = Array.from(event.target.files);
     const formData = new FormData();
 
     for (let i = 0; i < fileList.length; i++) {
@@ -21,8 +28,8 @@ function Main({ setCanAccessSlider }) {
         },
       });
       setFiles(response.data.files);
-      const name = fileList[0].webkitRelativePath.split('/')[0];
-      localStorage.setItem('directoryName', name);
+      const dirName = fileList[0].webkitRelativePath.split('/')[0];
+      localStorage.setItem('path', dirName)
     } catch (error) {
       console.error('Error uploading files:', error);
     }
@@ -36,6 +43,9 @@ function Main({ setCanAccessSlider }) {
   const handleClearButton = () => {
     const inputVal = document.getElementById('inputVal')
     inputVal.value = ''
+    handleUploadDir()
+    setCanAccessSlider(false)
+    setFiles([])
   }
   return (
     <main className="main container">

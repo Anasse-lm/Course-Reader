@@ -140,11 +140,27 @@ body {
     max-width: 800px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
 }
 
 .path-info:hover {
     background-color: #3a3f47;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.path-info h4 {
+  font-size: 20px;
+  text-decoration-line: none !important;
+  color: white;
+  /* Add more styles as per your design */
+}
+
+.path-info h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 30px;
+  /* Add more styles as per your design */
 }
 
 /* Slider Styles */

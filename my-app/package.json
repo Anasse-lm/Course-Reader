@@ -11,6 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.20",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "react": "^18.2.0",
