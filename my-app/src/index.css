@@ -2,6 +2,7 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 body {
     font-family: 'Arial, sans-serif';
     margin: 0;
@@ -10,8 +11,6 @@ body {
     color: #e3e6ea;
     box-sizing: border-box;
 }
-
-
 
 .app {
     width: 100%;
@@ -100,8 +99,6 @@ body {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-
-
 .input-group button:hover {
     background-color: #61dafb;
     border-color: #61dafb;
@@ -138,6 +135,7 @@ body {
     color: #e3e6ea;
     width: 100%;
     max-width: 800px;
+    height: 40px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: background-color 0.3s, box-shadow 0.3s;
     display: flex;
@@ -150,14 +148,9 @@ body {
 }
 
 .path-info h4 {
-  font-size: 20px;
+  font-size: 18px;
   text-decoration-line: none !important;
   color: white;
-  /* Add more styles as per your design */
-}
-
-.path-info h3 {
-  font-size: 24px;
   font-weight: bold;
   margin-left: 30px;
   /* Add more styles as per your design */
@@ -167,7 +160,7 @@ body {
 .slider {
     width: 100%;
     margin: auto;
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: #25272a;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
@@ -175,13 +168,7 @@ body {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.slide {
-    display: none;
-}
 
-.slide.active {
-    display: block;
-}
 
 /* Utility Classes */
 .text-center {

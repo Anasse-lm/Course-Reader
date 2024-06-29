@@ -13,10 +13,13 @@
   "dependencies": {
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.20",
+    "@react-pdf/renderer": "^3.4.4",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "pdfjs-dist": "^4.3.136",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pdf": "^9.0.0",
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {

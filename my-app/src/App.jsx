@@ -16,9 +16,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<HomePage setCanAccessSlider={setCanAccessSlider}/>} />
           <Route path="/slider" caseSensitive={true} element={canAccessSlider ? <SlidesPage/> : <Navigate to='/'/>}/>
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/donate" element={<Donate />} />
-          <Route path="*" element={<Navigate to="/"/>} /> 
+          <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
       </Router>
     </div>
