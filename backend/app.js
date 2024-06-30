@@ -50,6 +50,21 @@ app.get('/files', (req, res) => {
   });
 });
 
+// Get file as param:
+app.get('/uploads/:filename', (req, res) => {
+  const filename = req.params.filename
+  const filepath = path.join(__dirname, 'uploads', filename)
+  if (fs.existsSync(filepath))
+  {
+    res.setHeader('Content-Disposition', 'inline');
+    res.sendFile(filepath);
+  }
+  else
+  {
+    res.status(404).json({error: 'File not found'})
+  }
+})
+
 // Delete uploads dir:
 app.delete('/delete', (req, res) => {
   if (!fs.existsSync(uploadsDir)) {

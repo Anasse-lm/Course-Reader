@@ -168,8 +168,6 @@ body {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-
-
 /* Utility Classes */
 .text-center {
     text-align: center;
@@ -185,4 +183,16 @@ body {
 
 .mb-2 {
     margin-bottom: 2rem;
+}
+
+/* Pdf viewer style */
+.pfd-viewer-div {
+    width: 70%;
+    display: flex;
+    margin: auto ;
+    padding: 1rem;
+    background-color: white;
+    overflow: 'auto';
+    color: black;
+    flex-direction: column;
 }

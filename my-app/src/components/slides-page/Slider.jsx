@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import {Document, Page, pdfjs} from 'react-pdf';
 import Video from './Video';
+import PdfFile from './PdfFile';
+import { PDFViewer } from '@react-pdf/renderer';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 export default function Slider() {
     const [data, setData] = useState([])
@@ -28,7 +28,15 @@ export default function Slider() {
         {data.filter(file => file.endsWith('.mp4') || file.endsWith('.html') || file.endsWith('.pdf')).map((file ,index) => {
           if (file.endsWith('.mp4')) {
             return (
-              <Video index={index} file={file}/>
+              <Video key={index} file={file}/>
+            )
+          }
+          else
+          {
+            return (
+              <div key={index}>
+                <PdfFile file={file}/>
+              </div>  
             )
           }
         })}
