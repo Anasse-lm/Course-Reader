@@ -14,7 +14,8 @@ body {
 
 .app {
     width: 100%;
-    height: 600px;
+    height:700px;
+    
 }
 
 /* Header Styles */
@@ -27,6 +28,7 @@ body {
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s;
+    margin-bottom: 150px;
 }
 
 .navbar-brand {
@@ -61,7 +63,7 @@ body {
     width: 60%;
     margin: 2rem auto;
     transition: background-color 0.3s, box-shadow 0.3s;
-    margin-top: 150px;
+    
 }
 
 .input-group {
@@ -157,17 +159,52 @@ body {
 }
 
 /* Slider Styles */
+.slider-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}  
 .slider {
     width: 100%;
-    margin: auto;
     padding: 1rem;
     background-color: #25272a;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     color: #e3e6ea;
+    transition: transform 0.5s ease-in-out;
     transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+}
+.slider > div, video {
+    min-width: 100%;
+    box-sizing: border-box;
+    margin-right: 50px;
+    height: 100%;
 }
 
+.btns {
+    position: absolute;
+    top: 50%;
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .btns button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+.btns button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 /* Utility Classes */
 .text-center {
     text-align: center;
