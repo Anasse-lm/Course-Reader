@@ -162,31 +162,25 @@ body {
 .slider-container {
     position: relative;
     width: 80%;
-    margin: auto;
     overflow: hidden;
+    margin: auto;
 }  
 .slider {
-    width: 100%;
-    padding: 1rem;
-    background-color: #25272a;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    color: #e3e6ea;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    transition: transform 0.5s ease-in-out;
     display: flex;
+    transition: transform 0.5s ease-in-out;
 }
-.slider > div, video {
-    min-width: 100%;
+
+.slide {
+    min-width: calc(100% - 40px); /* Subtracting the total margin */
+    margin: 0 20px; /* Margin on both sides */
     box-sizing: border-box;
-    margin-right: 50px;
-    height: 100%;
 }
+
 
 .btns {
     position: absolute;
     top: 50%;
-    width: 99%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
@@ -224,12 +218,18 @@ body {
 
 /* Pdf viewer style */
 .pfd-viewer-div {
-    width: 70%;
+    width: 100%;
     display: flex;
-    margin: auto ;
+    align-items: center;
     padding: 1rem;
     background-color: white;
     overflow: 'auto';
     color: black;
     flex-direction: column;
+}
+.video-div {
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+    border-radius: 4px;
 }

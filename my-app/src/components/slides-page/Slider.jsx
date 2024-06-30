@@ -7,7 +7,7 @@ import SlideBtn from './btns/SlideBtn';
 
 export default function Slider() {
     const [data, setData] = useState([])
-    const [slideIndex, setSlideIndex] = useState(0)
+    const [currentIndex, setCurrentIndex] = useState(0)
     const [filesExceptStr, setFilesExceptStr] = useState([])
 
     const fetchData = async() => {
@@ -19,19 +19,14 @@ export default function Slider() {
       }
     }
 
-    const nextHandle = () => {
-      if (slideIndex !== filesExceptStr.length - 1)
-        setSlideIndex(slideIndex + 1)
-      else if (slideIndex === filesExceptStr.length - 1)
-        setSlideIndex(0)
-    }
+    const nextSlide = () => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % filesExceptStr.length);
+    };
+  
+    const prevSlide = () => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + filesExceptStr.length) % filesExceptStr.length);
+    };
 
-    const prevHandle = () => {
-      if (slideIndex !== 0)
-        setSlideIndex(slideIndex - 1)
-      else if (slideIndex === 0)
-        setSlideIndex(filesExceptStr.length - 1)
-    }
     useEffect(() => {
       fetchData()
     },[])
@@ -42,11 +37,11 @@ export default function Slider() {
 
     return (
       <div className='slider-container'>
-        <div className="slider" style={{ transform: `translateX(-${slideIndex * 102}%)` }}>
+        <div className="slider" style={{ transform: `translateX(-${currentIndex * 100 }%)` }}>
           {data.filter(file => file.endsWith('.mp4') || file.endsWith('.html') || file.endsWith('.pdf')).map((file ,index) => {
             if (file.endsWith('.mp4')) {
               return (
-                <div className={index !== 0 ? 'slider':''}>
+                <div className='slide'>
                   <Video key={index} file={file}/>
                 </div>
               )
@@ -54,7 +49,7 @@ export default function Slider() {
             else
             {
               return (
-                <div key={index} className={index !== 0 ? 'slider':''}>
+                <div key={index} className='slide'>
                   <PdfFile file={file}/>
                 </div>  
               )
@@ -62,8 +57,8 @@ export default function Slider() {
           })}
         </div>
         <div className='btns' style={{display:'relative', margin:'auto'}}>
-          <SlideBtn direction={'back'} moveSlide={prevHandle}/>
-          <SlideBtn direction={'next'} moveSlide={nextHandle}/>
+          <SlideBtn direction={'back'} moveSlide={prevSlide}/>
+          <SlideBtn direction={'next'} moveSlide={nextSlide}/>
         </div>
       </div>
     );
