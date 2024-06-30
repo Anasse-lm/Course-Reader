@@ -172,8 +172,8 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     color: #e3e6ea;
-    transition: transform 0.5s ease-in-out;
     transition: background-color 0.3s, box-shadow 0.3s;
+    transition: transform 0.5s ease-in-out;
     display: flex;
 }
 .slider > div, video {

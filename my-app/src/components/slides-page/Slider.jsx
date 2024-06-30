@@ -42,17 +42,19 @@ export default function Slider() {
 
     return (
       <div className='slider-container'>
-        <div className="slider" style={{ transform: `translateX(-${slideIndex * 100}% + 50px)` }}>
+        <div className="slider" style={{ transform: `translateX(-${slideIndex * 102}%)` }}>
           {data.filter(file => file.endsWith('.mp4') || file.endsWith('.html') || file.endsWith('.pdf')).map((file ,index) => {
             if (file.endsWith('.mp4')) {
               return (
-                <Video key={index} file={file}/>
+                <div className={index !== 0 ? 'slider':''}>
+                  <Video key={index} file={file}/>
+                </div>
               )
             }
             else
             {
               return (
-                <div key={index}>
+                <div key={index} className={index !== 0 ? 'slider':''}>
                   <PdfFile file={file}/>
                 </div>  
               )
