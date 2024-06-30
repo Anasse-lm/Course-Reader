@@ -68,7 +68,7 @@ npm start
 
 ## Usage
 
-1. Open your browser and navigate to \`http://localhost:5000\`.
+1. Open your browser and navigate to `http://localhost:5000/`.
 2. Upload your files using the upload input on the home page.
 3. Navigate to different sections of the application using the provided links.
 
@@ -96,7 +96,7 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (\`git push origin feature-branch\`).
 5. Create a new Pull Request.
 
-# Custom License
+# License
 
 Copyright (c) [2024] [ANASSE-LM]
 
