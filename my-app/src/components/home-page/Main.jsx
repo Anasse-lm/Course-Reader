@@ -9,6 +9,7 @@ function Main({ setCanAccessSlider }) {
     const response = await axios.delete('http://localhost:5000/delete')
   }
   useEffect(() => {
+    localStorage.removeItem('path');
     handleUploadDir()
   },[])
 

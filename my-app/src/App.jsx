@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className='app'>
-      <Router>
+      <Router basename="/">
         <Routes>
           <Route path="/" exact element={<HomePage setCanAccessSlider={setCanAccessSlider}/>} />
           <Route path="/slider" caseSensitive={true} element={canAccessSlider ? <SlidesPage/> : <Navigate to='/'/>}/>

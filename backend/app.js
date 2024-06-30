@@ -11,7 +11,7 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname,'..', 'my-app', 'dist')));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -63,6 +63,9 @@ app.get('/uploads/:filename', (req, res) => {
   {
     res.status(404).json({error: 'File not found'})
   }
+})
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname,'..', 'my-app', 'dist', 'index.html'));
 })
 
 // Delete uploads dir:

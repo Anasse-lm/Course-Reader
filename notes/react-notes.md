@@ -269,3 +269,18 @@ i.e:    ComponentC is parent of ComponentD
     const varRef = useRef()       
     // we can use also html's ref attribute  with userRef()
 ```
+
+## Project notes:
+#### Input files:
+```jsx
+    <input
+        id="inputVal" 
+        type="file"
+        webkitdirectory="true"
+        directory="true"
+        multiple
+        onChange={handleDirectoryUpload}
+    />
+```
+
+#### Slider notes:
