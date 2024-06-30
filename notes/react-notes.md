@@ -267,4 +267,5 @@ i.e:    ComponentC is parent of ComponentD
 - **Code:**
 ```jsx
     const varRef = useRef()       
-    // we can use also the ref attribute of html with userRef()
+    // we can use also html's ref attribute  with userRef()
+```
