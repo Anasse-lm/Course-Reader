@@ -1,7 +1,6 @@
 import HomePage from './components/home-page/HomePage';
 import { BrowserRouter as Router, Route, Routes, Navigate  } from 'react-router-dom';
 import AboutUs from './components/home-page/AboutUs';
-import Donate from './components/home-page/Donate';
 import SlidesPage from './components/slides-page/SlidesPage';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
