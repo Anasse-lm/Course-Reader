@@ -44,7 +44,7 @@ npm install
 4. Navigate to the \`client\` directory:
 
 ```bash
-cd client
+cd my-app
 ```
 
 5. Install the client dependencies:
