@@ -1,5 +1,5 @@
 import subprocess
-
+import webbrowser
 def run_node_script():
     try:
         # Define the command to run
@@ -17,6 +17,8 @@ def run_node_script():
         else:
             print(f"Node script executed successfully: {stdout.decode('utf-8')}")
 
+            # Open web browser to http://localhost:5000/
+            webbrowser.open('http://localhost:5000/')
     except Exception as e:
         print(f"Error occurred: {str(e)}")
 
