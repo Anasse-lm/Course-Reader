@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-Course Reader is a web application that allows users to upload, view, and manage files, including PDF and HTML files. The application leverages a React front-end and a Node.js back-end to provide seamless file handling and display capabilities.
+**Course Reader** is a robust web application designed to streamline the process of managing and viewing course materials. Leveraging modern web technologies like React.js for the frontend and Node.js for the backend, Course Reader provides a seamless user experience for uploading and accessing course files.
 
 ## Table of Contents
 
