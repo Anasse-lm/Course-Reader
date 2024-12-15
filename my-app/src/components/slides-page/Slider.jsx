@@ -20,11 +20,11 @@ export default function Slider() {
     }
 
     const nextSlide = () => {
-      // setCurrentIndex((prevIndex) => (prevIndex + 1) % filesExceptStr.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % filesExceptStr.length);
     };
   
     const prevSlide = () => {
-      // setCurrentIndex((prevIndex) => (prevIndex - 1 + filesExceptStr.length) % filesExceptStr.length);
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + filesExceptStr.length) % filesExceptStr.length);
     };
 
     useEffect(() => {
