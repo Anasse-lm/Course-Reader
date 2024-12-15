@@ -9,7 +9,7 @@ export default function Slider() {
     const [data, setData] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0)
     const [filesExceptStr, setFilesExceptStr] = useState([])
-
+    
     const fetchData = async() => {
       try {
         const response = await axios.get('http://localhost:5000/files');
@@ -20,11 +20,11 @@ export default function Slider() {
     }
 
     const nextSlide = () => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % filesExceptStr.length);
+      // setCurrentIndex((prevIndex) => (prevIndex + 1) % filesExceptStr.length);
     };
   
     const prevSlide = () => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + filesExceptStr.length) % filesExceptStr.length);
+      // setCurrentIndex((prevIndex) => (prevIndex - 1 + filesExceptStr.length) % filesExceptStr.length);
     };
 
     useEffect(() => {

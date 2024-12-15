@@ -25,3 +25,5 @@ def run_node_script():
 # Execute the function when the script is run
 if __name__ == "__main__":
     run_node_script()
+
+# Automate this : click on dir cmd -> cd path/Coursera-reader -> py run.py -> make run.py an run.exe 
